@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PRECIO Y RECOMPENSA · Live Bingo</title>
+<style>
+:root{--bg:#070b14;--panel:#101b2d;--panel2:#14243a;--gold:#edc879;--cyan:#65eafa;--muted:#91a5bf;--line:#ffffff1b;--green:#65e6b4;--orange:#ff9d60}
+*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:radial-gradient(ellipse at 15% 0,#153b5c55,transparent 42%),radial-gradient(ellipse at 90% 100%,#8d632333,transparent 40%),var(--bg);color:#f4f7ff;font-family:Inter,system-ui,Segoe UI,sans-serif}
+button,input,select{font:inherit}button,select{cursor:pointer}.app{height:100vh;padding:12px 16px;display:grid;grid-template-rows:auto minmax(0,1fr);gap:10px}
+.glass{background:linear-gradient(145deg,#182941e8,#0b1424ed);border:1px solid var(--line);border-radius:15px;box-shadow:0 12px 32px #0005,inset 0 1px #ffffff09;backdrop-filter:blur(14px)}
+header{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:stretch}.brand{padding:12px 17px;display:flex;flex-direction:column;justify-content:center}.eyebrow{font-size:9px;letter-spacing:.25em;color:var(--cyan);font-weight:900}h1{font-size:clamp(19px,2vw,27px);margin:4px 0 0;letter-spacing:.07em}h1 b{color:var(--gold)}.config{display:flex;align-items:center;gap:10px;padding:9px 12px}.field{display:grid;gap:4px;min-width:115px}.field label,.muted-label{font-size:9px;letter-spacing:.13em;color:var(--muted);font-weight:800;text-transform:uppercase}.field input{min-width:0;width:100%;background:#050b15aa;color:white;border:1px solid #edc87955;border-radius:8px;padding:8px;outline:none}.actions{display:flex;gap:7px;align-items:center;padding:9px}.btn{border:1px solid var(--line);border-radius:9px;padding:9px 12px;background:#ffffff0c;color:#eaf3ff;font-size:10px;font-weight:850;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap}.btn:hover{border-color:#65eafa88;transform:translateY(-1px)}.btn.gold{background:linear-gradient(135deg,#f5dda0,#bd8736);color:#17120a;border-color:#f5dda0}.btn.cyan{color:var(--cyan);border-color:#65eafa66}.btn.red{color:#ffaaaa;border-color:#ff888855}
+main{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:10px;min-height:0}.left{display:grid;grid-template-rows:minmax(0,1fr);gap:10px;min-height:0}.board{padding:9px;display:flex;flex-direction:column;gap:7px;min-height:0}.heading{display:flex;justify-content:space-between;align-items:center;padding:1px 3px}.section{font-size:10px;letter-spacing:.18em;color:#c5d3e5;font-weight:900}.tiny{font-size:9px;color:var(--muted)}.cards{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:repeat(3,minmax(0,1fr));gap:7px;flex:1;min-height:0}.ticket{padding:7px;border-radius:11px;background:linear-gradient(145deg,#1a2a43,#0b1423);border:1px solid #a6c2e522;display:flex;flex-direction:column;gap:4px;min-height:0;transition:.2s}.ticket.near{border-color:var(--orange);box-shadow:0 0 18px #ff9d6033;animation:pulse 1.1s infinite}.ticket.winner{border-color:var(--gold);box-shadow:0 0 25px #edc87966}.ticket-top{display:flex;gap:6px;align-items:center}.ticket-id{font-size:9px;color:var(--gold);font-weight:900}.name{width:100%;min-width:0;background:none;border:0;border-bottom:1px solid #ffffff22;color:white;padding:3px 1px;outline:none;font-size:clamp(9px,.85vw,12px);font-weight:750}.name:focus{border-color:var(--cyan)}.status{height:11px;text-align:center;font-size:8px;font-weight:900;color:var(--orange);letter-spacing:.1em}.numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;flex:1;min-height:0}.cell{display:grid;place-items:center;background:linear-gradient(145deg,#344965aa,#111e31);border:1px solid #ffffff17;border-radius:7px;font-size:clamp(13px,1.25vw,20px);font-weight:950;color:#e4efff}.cell.marked{background:linear-gradient(135deg,#a4f8ff,#37c8dc);color:#06151b;border-color:#c7ffff;box-shadow:0 0 13px #65eafa66;transform:scale(.96)}
+.side{display:grid;grid-template-rows:1fr 1fr;gap:10px;min-height:0}.draw,.history{padding:12px;min-height:0}.draw{display:flex;flex-direction:column;align-items:center;justify-content:space-between;gap:7px}.draw-label{font-size:9px;letter-spacing:.23em;color:var(--cyan);font-weight:900}.orb{width:min(17vh,155px);height:min(17vh,155px);min-width:105px;min-height:105px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 28%,#3c5878,#152b46 55%,#081322);border:2px solid #edc879bb;box-shadow:0 0 0 6px #edc87912,0 0 28px #edc87933,inset 0 0 22px #65eafa22}.orb.spin{animation:spin .45s linear infinite}.number{font-size:clamp(43px,5vw,67px);font-weight:950;color:#fff0b8;text-shadow:0 0 22px #edc87988}.draw-btn{width:100%;padding:13px}.auto-controls{display:grid;grid-template-columns:1fr auto;gap:6px;width:100%}.speed-select{background:#050b15aa;color:var(--cyan);border:1px solid #65eafa66;border-radius:9px;padding:6px 8px;font-size:10px;font-weight:850;outline:none;text-align:center}.subline{font-size:9px;color:var(--muted);text-align:center}.stats{display:flex;justify-content:space-between;align-items:center;margin:5px 0}.stat-label{font-size:9px;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;font-weight:800}.stat-value{font-size:18px;color:#fff0b8;font-weight:950;font-variant-numeric:tabular-nums}.history-list{display:flex;gap:5px;flex-wrap:wrap;overflow:hidden}.history-list span{width:28px;height:26px;border-radius:7px;display:grid;place-items:center;background:#ffffff0c;border:1px solid var(--line);font-size:10px;font-weight:900}.history-list .latest{background:var(--gold);color:#17120a}
+.clean .config,.clean .edit-only{display:none!important}.clean header{grid-template-columns:1fr auto}.clean .left{grid-template-rows:minmax(0,1fr)}
+.overlay{position:fixed;inset:0;z-index:20;background:#02050ccc;backdrop-filter:blur(9px);display:none;align-items:center;justify-content:center}.overlay.show{display:flex}.winner{width:min(620px,90vw);padding:35px;text-align:center;border:1px solid var(--gold);border-radius:22px;background:linear-gradient(145deg,#1b2c43,#08111f);box-shadow:0 0 75px #edc87933;animation:pop .45s}.winner h2{font-size:clamp(30px,5vw,52px);color:#fff0b8;margin:8px}.winner-name{font-size:clamp(23px,4vw,38px);font-weight:950;color:var(--cyan)}#confetti{position:fixed;inset:0;z-index:30;pointer-events:none}.toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:40;padding:9px 14px;border:1px solid #65eafa66;background:#14243a;border-radius:9px;font-size:11px;display:none}
+@keyframes spin{to{transform:rotate(360deg)}}@keyframes pulse{50%{box-shadow:0 0 0 2px #ff9d6044,0 0 22px #ff9d6044}}@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+@media(max-height:700px){.app{padding:7px;gap:6px}.left{grid-template-rows:minmax(0,1fr)}.board{padding:6px}.ticket{padding:4px}.draw,.history{padding:8px}.orb{width:110px;height:110px}.draw-btn{padding:8px}}
+@media(max-width:900px){html,body{overflow:auto}.app{height:auto;min-height:100vh;display:block}.brand,.config,.actions{margin-bottom:7px}header{grid-template-columns:1fr}.config{flex-wrap:wrap}.main{display:flex;flex-direction:column}.left{display:flex;flex-direction:column}.board{min-height:650px}.cards{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:none}.ticket{min-height:145px}.side{grid-template-columns:1fr 1fr;grid-template-rows:auto auto}.draw{grid-row:span 2}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+<header>
+ <section class="brand glass"><div class="eyebrow">LIVE GAME EXPERIENCE · 1—150</div><h1>PRECIO <b>&</b> RECOMPENSA</h1></section>
+ <section class="config glass edit-only">
+  <div class="field"><label for="roundTitle">Nombre de la ronda</label><input id="roundTitle" value="Gran bingo en vivo" maxlength="35"></div>
+  <div class="field"><label for="reward">Premio simbólico</label><input id="reward" value="Premio sorpresa" maxlength="40"></div>
+ </section>
+ <section class="actions glass"><button class="btn cyan" id="cleanBtn">◈ Modo limpio</button><button class="btn" id="newBtn">↻ Nuevos cartones</button><button class="btn red" id="resetBtn">Reiniciar</button></section>
+</header>
+<main>
+ <div class="left">
+  <section class="board glass">
+   <div class="heading"><div class="section">◆ CARTONES DE PARTICIPANTES</div><div class="tiny">15 CARTONES · 3 × 3 · SIN DUPLICADOS</div></div>
+   <div class="cards" id="cards"></div>
+  </section>
+ </div>
+ <aside class="side">
+  <section class="draw glass">
+   <div class="draw-label">SORTEO ALEATORIO · EN VIVO</div>
+   <div class="orb" id="orb"><div class="number" id="current">--</div></div>
+   <button class="btn gold draw-btn" id="drawBtn">✦ GIRAR RULETA</button>
+   <div class="auto-controls">
+    <button class="btn cyan draw-btn" id="autoBtn" style="margin:0;">▶ AUTO GIRAR</button>
+    <select class="speed-select" id="speedSelect" title="Velocidad de auto giro">
+     <option value="2000" selected>2s</option>
+     <option value="3000">3s</option>
+     <option value="5000">5s</option>
+    </select>
+   </div>
+   <div class="subline">Pulsa ESPACIO para sacar el siguiente número</div>
+  </section>
+  <section class="history glass">
+   <div class="stats"><span class="stat-label">Números disponibles</span><span class="stat-value" id="remaining">135</span></div>
+   <div class="stats"><span class="stat-label">Sorteados</span><span class="stat-value" id="drawnCount">0</span></div>
+   <div class="stats"><span class="stat-label">Historial · reciente primero</span></div><div class="history-list" id="historyList"></div>
+  </section>
+ </aside>
+</main>
+</div>
+<div class="overlay" id="winOverlay"><div class="winner glass"><div style="font-size:42px">♛</div><div class="eyebrow">VICTORIA EN VIVO</div><h2>¡BINGO!</h2><div class="winner-name" id="winnerName"></div><p>Completó las 9 casillas.</p><p>Premio simbólico: <strong id="winnerReward" style="color:var(--gold)"></strong></p><button class="btn gold" id="closeWin">Cerrar</button></div></div>
+<div class="toast" id="toast"></div><canvas id="confetti"></canvas>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),N_CARDS=15,CELLS=9,MAX=150;
+let cards=[],drawn=[],remaining=[],spinning=false,gameOver=false,soundOn=true,autoInterval=null;
+function shuffle(a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function makeCards(){const pool=shuffle(Array.from({length:MAX},(_,i)=>i+1)).slice(0,N_CARDS*CELLS);return Array.from({length:N_CARDS},(_,i)=>shuffle(pool.slice(i*CELLS,(i+1)*CELLS)))}
+function renderCards(names=[]){$('cards').innerHTML='';cards.forEach((nums,i)=>{const card=document.createElement('article');card.className='ticket';const top=document.createElement('div');top.className='ticket-top';const id=document.createElement('span');id.className='ticket-id';id.textContent='#'+String(i+1).padStart(2,'0');const name=document.createElement('input');name.className='name';name.maxLength=28;name.value=names[i]||'Participante '+(i+1);name.setAttribute('aria-label','Nombre participante '+(i+1));top.append(id,name);const status=document.createElement('div');status.className='status';const grid=document.createElement('div');grid.className='numbers';nums.forEach(n=>{const cell=document.createElement('div');cell.className='cell';cell.dataset.n=n;cell.textContent=n;grid.append(cell)});card.append(top,status,grid);$('cards').append(card)});updateBoard()}
+function countMarked(ticket){return [...ticket.querySelectorAll('.cell')].filter(c=>drawn.includes(+c.dataset.n)).length}
+function updateBoard(){document.querySelectorAll('.ticket').forEach(t=>{const count=countMarked(t);t.classList.toggle('near',count===8&&!gameOver);t.classList.toggle('winner',gameOver&&count===9);t.querySelector('.status').textContent=count===8&&!gameOver?'¡A 1 DE GANAR!':count===9?'BINGO':'';t.querySelectorAll('.cell').forEach(c=>c.classList.toggle('marked',drawn.includes(+c.dataset.n)))});updateStats()}
+function updateStats(){$('remaining').textContent=remaining.length;$('drawnCount').textContent=drawn.length;$('historyList').innerHTML='';drawn.slice(-14).reverse().forEach((n,i)=>{const s=document.createElement('span');s.textContent=n;if(i===0)s.className='latest';$('historyList').append(s)})}
+let audio=null;function beep(f=600,d=.12,type='sine',delay=0){if(!soundOn)return;const AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;if(!audio)audio=new AC();if(audio.state==='suspended')audio.resume();const o=audio.createOscillator(),g=audio.createGain(),t=audio.currentTime+delay;o.type=type;o.frequency.setValueAtTime(f,t);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(.05,t+.015);g.gain.exponentialRampToValueAtTime(.0001,t+d);o.connect(g);g.connect(audio.destination);o.start(t);o.stop(t+d+.02)}
+function toast(s){$('toast').textContent=s;$('toast').style.display='block';clearTimeout(toast.timer);toast.timer=setTimeout(()=>$('toast').style.display='none',2200)}
+function stopAuto(){if(autoInterval){clearInterval(autoInterval);autoInterval=null;$('autoBtn').textContent='▶ AUTO GIRAR';$('autoBtn').classList.remove('gold');$('autoBtn').classList.add('cyan')}}
+function startAutoInterval(){if(autoInterval)clearInterval(autoInterval);const intervalMs=parseInt($('speedSelect').value,10);autoInterval=setInterval(()=>{if(spinning||gameOver){if(gameOver||!remaining.length)stopAuto();return}draw(true)},intervalMs)}
+function draw(isAuto=false){if(spinning||gameOver)return;if(!remaining.length){stopAuto();toast('Ya se sortearon todos los números de los cartones.');return}spinning=true;$('drawBtn').disabled=true;if(!isAuto && autoInterval){stopAuto()}
+$('orb').classList.add('spin');for(let i=0;i<6;i++)beep(250+i*65,.05,'triangle',i*.07);let t=0;const timer=setInterval(()=>{$('current').textContent=remaining[Math.floor(Math.random()*remaining.length)];if(++t>=15){clearInterval(timer);const idx=Math.floor(Math.random()*remaining.length),n=remaining.splice(idx,1)[0];drawn.push(n);$('current').textContent=n;$('orb').classList.remove('spin');spinning=false;$('drawBtn').disabled=false;beep(720,.14);beep(940,.2,'sine',.12);updateBoard();checkWinner()}},75)}
+function toggleAuto(){if(gameOver)return;if(autoInterval){stopAuto();toast('Auto giro detenido.')}else{if(!remaining.length){toast('No hay números disponibles.');return}startAutoInterval();$('autoBtn').textContent='■ DETENER';$('autoBtn').classList.remove('cyan');$('autoBtn').classList.add('gold');toast('Auto giro activado.')}}
+$('speedSelect').onchange=()=>{if(autoInterval){startAutoInterval();toast('Velocidad actualizada ('+($('speedSelect').value/1000)+'s).')}};
+function checkWinner(){const i=cards.findIndex(c=>c.every(n=>drawn.includes(n)));if(i<0){if(!remaining.length){stopAuto()}return}stopAuto();gameOver=true;updateBoard();const name=document.querySelectorAll('.name')[i].value.trim()||'Participante '+(i+1);$('winnerName').textContent=name;$('winnerReward').textContent=$('reward').value||'Premio sorpresa';$('winOverlay').classList.add('show');$('drawBtn').disabled=true;[523,659,784,1047].forEach((f,i)=>beep(f,.38,'triangle',i*.14));confetti()}
+const canvas=$('confetti'),ctx=canvas.getContext('2d');let bits=[],raf=0;function resize(){canvas.width=innerWidth*devicePixelRatio;canvas.height=innerHeight*devicePixelRatio;ctx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}addEventListener('resize',resize);resize();
+function confetti(){bits=Array.from({length:180},()=>({x:Math.random()*innerWidth,y:-Math.random()*innerHeight*.5,vx:(Math.random()-.5)*3,vy:2+Math.random()*5,r:Math.random()*6,w:4+Math.random()*5,h:5+Math.random()*8,c:['#edc879','#65eafa','#fff','#ff9d60'][Math.floor(Math.random()*4)]}));cancelAnimationFrame(raf);const start=performance.now();function frame(now){ctx.clearRect(0,0,innerWidth,innerHeight);bits.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.r+=.08;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.r);ctx.fillStyle=p.c;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore()});bits=bits.filter(p=>p.y<innerHeight+20);if(bits.length&&now-start<8000)raf=requestAnimationFrame(frame);else ctx.clearRect(0,0,innerWidth,innerHeight)}raf=requestAnimationFrame(frame)}
+function newGame(keep=true){if(spinning)return;stopAuto();const names=[...document.querySelectorAll('.name')].map(x=>x.value);cards=makeCards();drawn=[];remaining=cards.flat();gameOver=false;$('current').textContent='--';$('drawBtn').disabled=false;$('winOverlay').classList.remove('show');renderCards(keep?names:[]);updateStats();ctx.clearRect(0,0,innerWidth,innerHeight)}
+$('drawBtn').onclick=()=>draw(false);$('autoBtn').onclick=toggleAuto;$('newBtn').onclick=()=>{newGame(true);toast('Nuevos cartones listos.')};$('resetBtn').onclick=()=>{if(confirm('¿Reiniciar la partida y los nombres?'))newGame(false)};
+$('cleanBtn').onclick=()=>{$('app').classList.toggle('clean');$('cleanBtn').textContent=$('app').classList.contains('clean')?'◈ Mostrar controles':'◈ Modo limpio'};
+$('closeWin').onclick=()=>$('winOverlay').classList.remove('show');
+document.addEventListener('keydown',e=>{if(e.code==='Space'&&!['INPUT','TEXTAREA','BUTTON'].includes(document.activeElement.tagName)){e.preventDefault();draw(false)}if(e.key==='Escape')$('winOverlay').classList.remove('show')});
+cards=makeCards();remaining=cards.flat();renderCards();updateStats();
+})();
+</script>
+</body>
+</html>
